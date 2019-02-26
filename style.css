@@ -1,0 +1,18 @@
+main{
+    display:flex;
+}
+
+.note{
+    background: yellow;
+    margin: 20px;
+    padding: 20px;
+    width: 200px;
+}
+
+body{
+    background: #ccc;
+}
+
+form{
+    padding:30px;
+}
