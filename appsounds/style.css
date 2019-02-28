@@ -1,0 +1,25 @@
+main{
+    display:flex;
+}
+
+.note{
+    background: yellow;
+    margin: 20px;
+    padding: 20px;
+    width: 200px;
+    word-break: break-all;
+    display: flex;
+    flex-direction: column;
+}
+
+body{
+    background: #ccc;
+}
+
+form{
+    padding:30px;
+}
+
+.btn-delete {
+    align-self: flex-end;
+}
