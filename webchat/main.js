@@ -2,7 +2,7 @@
 //nawiaz poloczenie z serwerem
 // wyslij wiadomosc do serwera
 // oczekuj na wiadomosci od servera
-const serverUrl = 'ws://127.0.0.1:8001'
+const serverUrl = 'ws://91.121.6.192:8010'
 
 const ws = new WebSocket(serverUrl)
 document.addEventListener('DOMContentLoaded', appStart)
@@ -60,7 +60,7 @@ function sendWSMsg(msg){
 function addToChatBox(data, isSent){
     const getMessageBox = document.querySelector('#chat')
     const newMessage = document.createElement('p')
-    
+
 
     if(isSent){
         newMessage.classList.add("recieved-message")
