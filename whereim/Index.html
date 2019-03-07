@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script>
+        var map;
+        let krakow = { lat: 50.06465, lng: 19.94498 }
+        var marker
+
+        
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: krakow,
+                zoom: 16
+            });
+            getUserPosition()
+        }
+
+        function getUserPosition() {
+            navigator.geolocation.getCurrentPosition(geoOk, geoFail)
+        }
+
+        function geoOk(data) {
+            let userPosition = {
+                lat: data.coords.latitude,
+                lng: data.coords.longitude
+            }
+
+            marker = new google.maps.Marker({
+                position: userPosition,
+                map: map,
+                animation: google.maps.Animation.DROP
+            })
+            showMyFriends(userPosition.lat, userPosition.lng)
+        }
+
+
+
+        function showMyFriends(positionLat, positionLong) {
+            for (let i = 0; i < 10; i++) {
+                let newFriendPositionlat = Math.random() * positionLat
+                let newFriendPositionlong = Math.random() * positionLong
+
+                let friendPosition = {
+                    lat: newFriendPositionlat,
+                    lng: newFriendPositionlong
+                }
+                console.log(newFriendPositionlat, newFriendPositionlong)
+
+
+                marker = new google.maps.Marker({
+                    position: friendPosition,
+                    map: map,
+                    animation: google.maps.Animation.DROP
+                })
+            }
+        }
+
+
+
+
+
+
+
+        function geoFail(err) {
+
+        }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3oc1OOMd22IA69ls27EgflSovZph1k7M&callback=initMap"
+        async defer></script>
+</body>
+
+</html>
